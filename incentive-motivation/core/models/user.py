@@ -12,9 +12,9 @@ from .mixins.int_id_pk import IntIdPkMixin
 if TYPE_CHECKING:
     from sqlalchemy.ext.asyncio import AsyncSession
 
+
 class User(Base, IntIdPkMixin, SQLAlchemyBaseUserTable[UserIdType]):
-    pass
 
     @classmethod
     def get_db(cls, session: "AsyncSession"):
-        return SQLAlchemyUserDatabase(session, User)
+        return SQLAlchemyUserDatabase(session, cls)
