@@ -1,3 +1,6 @@
+# Установка зависимостей через poetry
+poetry install
+
 # Поднять контейнеры
 docker_up:
  docker-compose up -d
