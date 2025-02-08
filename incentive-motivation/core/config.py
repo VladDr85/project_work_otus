@@ -23,6 +23,13 @@ class ApiPrefix(BaseModel):
     prefix: str = "/api"
     v1: ApiV1Prefix = ApiV1Prefix()
 
+    @property
+    def bearer_token_url(self) -> str:
+        # /api/v1/v1/login
+        patrs = (self.prefix, self.v1.prefix, self.v1.auth)
+        path = "".join(patrs)
+        return path.removeprefix("/")
+
 
 class DatabaseConfig(BaseModel):
     url: PostgresDsn
