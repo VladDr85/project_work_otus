@@ -7,12 +7,21 @@ from pydantic_settings import (
 
 
 class RunConfig(BaseModel):
-    host: str = 'localhost'
+    host: str = "localhost"
     port: int = 8000
+
+
+class ApiV1Prefix(BaseModel):
+    prefix: str = "/v1"
+    auth: str = "/auth"
+    users: str = "/users"
+    messages: str = "/messages"
+    service: str = "/service"
 
 
 class ApiPrefix(BaseModel):
     prefix: str = "/api"
+    v1: ApiV1Prefix = ApiV1Prefix()
 
 
 class DatabaseConfig(BaseModel):
