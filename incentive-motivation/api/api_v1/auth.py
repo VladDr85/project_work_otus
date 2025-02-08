@@ -9,7 +9,7 @@ from core.schemas.user import (
 )
 
 router = APIRouter(
-    prefix=settings.api.v1.prefix,
+    prefix=settings.api.v1.auth,
     tags=["Auth"],
 )
 
