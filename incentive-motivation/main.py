@@ -12,9 +12,11 @@ from core.models import db_helper
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await create_superuser()
     # startup
-    yield
+    try:
+        await create_superuser()
+    finally:
+        yield
     # shutdown
     await db_helper.dispose()
 
