@@ -18,7 +18,7 @@ class Incentive(BaseModel):
     ]
     description: Annotated[
         str,
-        Field(description="Описание"),
+        Field(description="Описание поощрения"),
     ]
     incidence_emergence: Annotated[
         int,
