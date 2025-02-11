@@ -1,4 +1,4 @@
-from sqlalchemy import select
+from sqlalchemy import select, func
 from sqlalchemy.engine import Result
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -63,3 +63,15 @@ async def delete_incentive(
 ) -> None:
     await session.delete(incentive)
     await session.commit()
+
+
+async def get_sum_incidence_emergence(
+    session: AsyncSession,
+    incentive_list_id: int,
+) -> int:
+    stmt = select(func.sum(Incentive.incidence_emergence)).where(
+        Incentive.incentive_list_id == incentive_list_id
+    )
+    result: Result = await session.execute(stmt)
+    sum_incidence_emergence = result.scalar()
+    return sum_incidence_emergence or 0

@@ -16,6 +16,7 @@ from core.schemas.incentive_list import (
 )
 from core.models import db_helper, User
 from core.services import incentive_list as incentive_list_service
+from core.services.incentive import get_sum_incidence_emergence
 
 if TYPE_CHECKING:
     from sqlalchemy.ext.asyncio import AsyncSession
@@ -124,6 +125,49 @@ async def update_incentive_list(
             session=session,
             incentive_list=incentive_list,
             incentive_list_update=incentive_list_update,
+        )
+
+    raise HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND,
+        detail=f"Incentive list {incentive_list_id} not found",
+    )
+
+
+@router.patch(
+    path="/undistributed-probability/{incentive_list_id}",
+    summary="Обновление поля undistributed_probability",
+    description="Обновляет поле undistributed_probability значением, полученным из суммы incidence_emergence",
+    response_model=IncentiveList,
+)
+async def update_undistributed_probability(
+    incentive_list_id: int,
+    session: Annotated[
+        "AsyncSession",
+        Depends(db_helper.session_getter),
+    ],
+    user: Annotated[
+        User,
+        Depends(current_active_superuser),
+    ],
+):
+    sum_incidence_emergence = await get_sum_incidence_emergence(
+        session=session,
+        incentive_list_id=incentive_list_id,
+    )
+
+    incentive_list = await incentive_list_service.get_incentive_list(
+        session=session,
+        incentive_list_id=incentive_list_id,
+    )
+
+    if incentive_list is not None:
+        incentive_list.undistributed_probability = sum_incidence_emergence
+        return await incentive_list_service.update_incentive_list(
+            session=session,
+            incentive_list=incentive_list,
+            incentive_list_update=IncentiveListUpdate(
+                undistributed_probability=100 - sum_incidence_emergence
+            ),
         )
 
     raise HTTPException(

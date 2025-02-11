@@ -33,7 +33,7 @@ class Incentive(Base, IntIdPkMixin):
     incidence_emergence: Mapped[int] = mapped_column(
         Integer,
         nullable=False,
-    )
+    )  # Частота выпадения
     is_deleted: Mapped[bool] = mapped_column(
         Boolean,
         default=False,
