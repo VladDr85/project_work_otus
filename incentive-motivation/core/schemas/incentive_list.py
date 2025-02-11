@@ -46,7 +46,7 @@ class IncentiveListUpdate(IncentiveListCreate):
     name: str | None = None
     description: str | None = None
     undistributed_probability: int | None = None
-    is_deleted: int | None = None
+    is_deleted: bool | None = None
 
 
 class IncentiveList(IncentiveListBase):
