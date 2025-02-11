@@ -15,6 +15,8 @@ class Incentive(Base, IntIdPkMixin):
     Описание модели ORM для объекта "Поощрение"
     """
 
+    __tablename__ = "incentives"
+
     incentive_list_id: Mapped[int] = mapped_column(
         Integer,
         ForeignKey("incentive_lists.id"),

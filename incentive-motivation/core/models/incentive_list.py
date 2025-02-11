@@ -16,6 +16,8 @@ class IncentiveList(Base, IntIdPkMixin):
     Описание модели ORM для объекта "Заголовок списка поощрений"
     """
 
+    __tablename__ = "incentive_lists"
+
     user_id: Mapped[UserIdType] = mapped_column(
         Integer,
         ForeignKey("users.id", ondelete="CASCADE"),

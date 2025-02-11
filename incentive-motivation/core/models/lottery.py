@@ -18,6 +18,8 @@ class Lottery(Base, IntIdPkMixin):
     Описание модели ORM для объекта "История результатов розыгрыша"
     """
 
+    __tablename__ = "lotteries"
+
     user_id: Mapped[UserIdType] = mapped_column(
         Integer,
         ForeignKey("users.id", ondelete="CASCADE"),
