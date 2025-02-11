@@ -2,12 +2,11 @@ from typing import Annotated
 from pydantic import BaseModel, Field, PositiveInt
 
 
-class IncentiveList(BaseModel):
+class IncentiveListBase(BaseModel):
     """
     Описание валидации для объекта "Заголовок списка поощрений"
     """
 
-    id: PositiveInt
     user_id: Annotated[
         int,
         Field(description="ИД участника"),
@@ -36,3 +35,7 @@ class IncentiveList(BaseModel):
             default=False,
         ),
     ]
+
+
+class IncentiveList(IncentiveListBase):
+    id: PositiveInt

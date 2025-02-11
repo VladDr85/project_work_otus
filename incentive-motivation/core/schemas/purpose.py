@@ -2,12 +2,11 @@ from typing import Annotated
 from pydantic import BaseModel, Field, PositiveInt
 
 
-class Purpose(BaseModel):
+class PurposeBase(BaseModel):
     """
     Описание валидации для объекта "Список целей мотивации"
     """
 
-    id: PositiveInt
     name: Annotated[
         str,
         Field(description="Наименование цели"),
@@ -32,3 +31,7 @@ class Purpose(BaseModel):
             default=False,
         ),
     ]
+
+
+class Purpose(PurposeBase):
+    id: PositiveInt

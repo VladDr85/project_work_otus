@@ -3,12 +3,11 @@ from typing import Annotated
 from pydantic import BaseModel, Field, PositiveInt
 
 
-class CompletedMission(BaseModel):
+class CompletedMissionBase(BaseModel):
     """
     Описание валидации для объекта "Журнал выполненных заданий"
     """
 
-    id: PositiveInt
     user_id: Annotated[
         int,
         Field(description="ИД участника"),
@@ -31,3 +30,7 @@ class CompletedMission(BaseModel):
             default=False,
         ),
     ]
+
+
+class CompletedMission(CompletedMissionBase):
+    id: PositiveInt

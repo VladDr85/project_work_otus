@@ -2,12 +2,11 @@ from typing import Annotated
 from pydantic import BaseModel, Field, PositiveInt
 
 
-class Incentive(BaseModel):
+class IncentiveBase(BaseModel):
     """
     Описание валидации для объекта "Поощрение"
     """
 
-    id: PositiveInt
     incentive_list_id: Annotated[
         int,
         Field(description="ИД списка"),
@@ -33,3 +32,7 @@ class Incentive(BaseModel):
         bool,
         Field(description="Признак удаления", default=False),
     ]
+
+
+class Incentive(IncentiveBase):
+    id: PositiveInt

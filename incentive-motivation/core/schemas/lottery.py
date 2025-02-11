@@ -3,12 +3,11 @@ from typing import Annotated
 from pydantic import BaseModel, Field, PositiveInt
 
 
-class Lottery(BaseModel):
+class LotteryBase(BaseModel):
     """
     Описание валидации для объекта "История результатов розыгрыша"
     """
 
-    id: PositiveInt
     user_id: Annotated[
         int,
         Field(description="ИД участника"),
@@ -35,3 +34,7 @@ class Lottery(BaseModel):
         datetime,
         Field(description="Дата получения приза"),
     ]
+
+
+class Lottery(LotteryBase):
+    id: PositiveInt
