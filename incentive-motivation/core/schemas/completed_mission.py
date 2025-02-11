@@ -9,9 +9,25 @@ class CompletedMission(BaseModel):
     """
 
     id: PositiveInt
-    user_id: Annotated[int, Field(description="ИД участника")]
-    mission_id: Annotated[int, Field(description="ИД задания")]
-    completion_date: Annotated[
-        datetime, Field(description="Дата выполнения", default=datetime.now())
+    user_id: Annotated[
+        int,
+        Field(description="ИД участника"),
     ]
-    is_delete: Annotated[bool, Field(description="Признак удаления", default=False)]
+    mission_id: Annotated[
+        int,
+        Field(description="ИД задания"),
+    ]
+    completion_date: Annotated[
+        datetime,
+        Field(
+            description="Дата выполнения",
+            default=datetime.now(),
+        ),
+    ]
+    is_delete: Annotated[
+        bool,
+        Field(
+            description="Признак обмена на поощрение",
+            default=False,
+        ),
+    ]

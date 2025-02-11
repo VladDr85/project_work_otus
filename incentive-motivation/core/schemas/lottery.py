@@ -9,12 +9,29 @@ class Lottery(BaseModel):
     """
 
     id: PositiveInt
-    user_id: Annotated[int, Field(description="ИД участника")]
-    incentive_id: Annotated[int, Field(description="ИД выбранного поощрения")]
+    user_id: Annotated[
+        int,
+        Field(description="ИД участника"),
+    ]
+    incentive_id: Annotated[
+        int,
+        Field(description="ИД выбранного поощрения"),
+    ]
     play_date: Annotated[
-        datetime, Field(description="Дата проведения лотереи", default=datetime.now())
+        datetime,
+        Field(
+            description="Дата проведения лотереи",
+            default=datetime.now(),
+        ),
     ]
     indication_receipt: Annotated[
-        bool, Field(description="Признак получения", default=False)
+        bool,
+        Field(
+            description="Признак получения",
+            default=False,
+        ),
     ]
-    receipt_date: Annotated[datetime, Field(description="Дата получения приза")]
+    receipt_date: Annotated[
+        datetime,
+        Field(description="Дата получения приза"),
+    ]
