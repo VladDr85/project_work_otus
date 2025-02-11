@@ -1,6 +1,7 @@
 from sqlalchemy import select
 from sqlalchemy.engine import Result
 from sqlalchemy.ext.asyncio import AsyncSession
+
 from core.models.incentive_list import IncentiveList
 from core.schemas.incentive_list import IncentiveListCreate, IncentiveListUpdate
 
@@ -48,4 +49,3 @@ async def delete_incentive_list(
 ) -> None:
     await session.delete(incentive_list)
     await session.commit()
-    await session.refresh(incentive_list)

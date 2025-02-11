@@ -21,6 +21,7 @@ if TYPE_CHECKING:
     from sqlalchemy.ext.asyncio import AsyncSession
     from core.models import User
 
+
 router = APIRouter(
     prefix=settings.api.v1.incentive_lists,
     tags=["Заголовок списка поощрений (IncentiveList)"],
@@ -60,7 +61,8 @@ async def get_incentive_list(
     ],
 ):
     incentive_list = await incentive_list_service.get_incentive_list(
-        session=session, incentive_list_id=incentive_list_id
+        session=session,
+        incentive_list_id=incentive_list_id,
     )
     if incentive_list is not None:
         return incentive_list
@@ -114,7 +116,8 @@ async def update_incentive_list(
     ],
 ):
     incentive_list = await incentive_list_service.get_incentive_list(
-        session=session, incentive_list_id=incentive_list_id
+        session=session,
+        incentive_list_id=incentive_list_id,
     )
     if incentive_list is not None:
         return await incentive_list_service.update_incentive_list(
@@ -147,13 +150,15 @@ async def delete_incentive_list(
     ],
 ) -> None:
     incentive_list = await incentive_list_service.get_incentive_list(
-        session=session, incentive_list_id=incentive_list_id
+        session=session,
+        incentive_list_id=incentive_list_id,
     )
     if incentive_list is not None:
         await incentive_list_service.delete_incentive_list(
             session=session,
             incentive_list=incentive_list,
         )
+        return
 
     raise HTTPException(
         status_code=status.HTTP_404_NOT_FOUND,
