@@ -20,7 +20,7 @@ class Lottery(Base, IntIdPkMixin):
 
     user_id: Mapped[UserIdType] = mapped_column(
         Integer,
-        ForeignKey("user.id", ondelete="CASCADE"),
+        ForeignKey("users.id", ondelete="CASCADE"),
         nullable=False,
     )  # ИД участника
     incentive_id: Mapped[int] = mapped_column(

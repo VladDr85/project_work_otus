@@ -18,7 +18,7 @@ class IncentiveList(Base, IntIdPkMixin):
 
     user_id: Mapped[UserIdType] = mapped_column(
         Integer,
-        ForeignKey("user.id", ondelete="CASCADE"),
+        ForeignKey("users.id", ondelete="CASCADE"),
         nullable=False,
     )  # ИД участника
     name: Mapped[str] = mapped_column(
