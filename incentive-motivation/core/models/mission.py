@@ -15,6 +15,8 @@ class Mission(Base, IntIdPkMixin):
     Описание модели ORM для объекта "Список заданий"
     """
 
+    __tablename__ = "missions"
+
     purpose_id: Mapped[int] = mapped_column(
         Integer,
         ForeignKey(

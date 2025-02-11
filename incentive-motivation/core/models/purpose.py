@@ -14,6 +14,8 @@ class Purpose(Base, IntIdPkMixin):
     Описание модели ORM для объекта "Список целей мотивации"
     """
 
+    __tablename__ = "purpose"
+
     name: Mapped[str] = mapped_column(
         String(150),
         nullable=False,

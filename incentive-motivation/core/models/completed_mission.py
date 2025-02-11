@@ -18,6 +18,8 @@ class CompletedMission(Base, IntIdPkMixin):
     Описание модели ORM для объекта "Журнал выполненных заданий"
     """
 
+    __tablename__ = "completed_missions"
+
     user_id: Mapped[UserIdType] = mapped_column(
         Integer,
         ForeignKey("users.id", ondelete="CASCADE"),
