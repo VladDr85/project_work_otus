@@ -33,5 +33,9 @@ class PurposeBase(BaseModel):
     ]
 
 
+class PurposeCreate(PurposeBase):
+    pass
+
+
 class Purpose(PurposeBase):
     id: PositiveInt

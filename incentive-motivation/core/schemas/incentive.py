@@ -34,5 +34,9 @@ class IncentiveBase(BaseModel):
     ]
 
 
+class IncentiveCreate(IncentiveBase):
+    pass
+
+
 class Incentive(IncentiveBase):
     id: PositiveInt

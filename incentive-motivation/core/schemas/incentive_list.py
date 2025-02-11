@@ -37,5 +37,9 @@ class IncentiveListBase(BaseModel):
     ]
 
 
+class IncentiveListCreate(IncentiveListBase):
+    pass
+
+
 class IncentiveList(IncentiveListBase):
     id: PositiveInt

@@ -32,5 +32,9 @@ class CompletedMissionBase(BaseModel):
     ]
 
 
+class CompletedMissionCreate(CompletedMissionBase):
+    pass
+
+
 class CompletedMission(CompletedMissionBase):
     id: PositiveInt

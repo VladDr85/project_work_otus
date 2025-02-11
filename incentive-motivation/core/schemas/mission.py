@@ -33,5 +33,9 @@ class MissionBase(BaseModel):
     ]
 
 
+class MissionCreate(MissionBase):
+    pass
+
+
 class Mission(MissionBase):
     id: PositiveInt

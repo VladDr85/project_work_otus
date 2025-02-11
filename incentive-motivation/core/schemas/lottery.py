@@ -36,5 +36,9 @@ class LotteryBase(BaseModel):
     ]
 
 
+class LotteryCreate(LotteryBase):
+    pass
+
+
 class Lottery(LotteryBase):
     id: PositiveInt
