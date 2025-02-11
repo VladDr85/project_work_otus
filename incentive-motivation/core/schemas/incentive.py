@@ -1,5 +1,5 @@
 from typing import Annotated
-from pydantic import BaseModel, Field, PositiveInt
+from pydantic import BaseModel, Field, PositiveInt, ConfigDict
 
 
 class IncentiveBase(BaseModel):
@@ -38,5 +38,14 @@ class IncentiveCreate(IncentiveBase):
     pass
 
 
+class IncentiveUpdate(IncentiveCreate):
+    incentive_list_id: int | None = None
+    incentive: str | None = None
+    description: str | None = None
+    incidence_emergence: int | None = None
+    is_deleted: bool | None = None
+
+
 class Incentive(IncentiveBase):
+    model_config = ConfigDict(from_attributes=True)
     id: PositiveInt
