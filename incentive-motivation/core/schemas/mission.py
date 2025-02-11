@@ -25,7 +25,7 @@ class Mission(BaseModel):
             default=1,
         ),
     ]
-    is_delete: Annotated[
+    is_deleted: Annotated[
         bool,
         Field(
             description="Признак удаления",

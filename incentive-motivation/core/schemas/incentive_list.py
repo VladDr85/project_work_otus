@@ -29,7 +29,7 @@ class IncentiveList(BaseModel):
             default=100,
         ),
     ]
-    is_delete: Annotated[
+    is_deleted: Annotated[
         bool,
         Field(
             description="Признак удаления",

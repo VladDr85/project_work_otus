@@ -24,7 +24,7 @@ class CompletedMission(BaseModel):
             default=datetime.now(),
         ),
     ]
-    is_delete: Annotated[
+    is_gave_prize: Annotated[
         bool,
         Field(
             description="Признак обмена на поощрение",
