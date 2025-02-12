@@ -1,3 +1,6 @@
+# Установка зависимостей через poetry
+poetry install
+
 # Поднять контейнеры
 docker_up:
  docker-compose up -d
@@ -18,6 +21,9 @@ test:
 # alembic. Накат всех миграций
 alembic_up_all:
  alembic upgrade head
+
+# alembic. Откатить последнюю миграцию
+ alembic downgrade -1
 
 # alembic. Откат всех миграций
 alembic_down_all:

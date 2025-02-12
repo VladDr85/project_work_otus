@@ -10,7 +10,13 @@ pydantic-settings = "^2.7.1"
 sqlalchemy = {extras = ["asyncio"], version = "^2.0.37"}
 asyncpg = "^0.30.0"
 alembic = "^1.14.1"
+fastapi-users = {extras = ["sqlalchemy"], version = "^14.0.1"}
+orjson = "^3.10.15"
+pylint = "^3.3.4"
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"
+pytest = "^8.3.4"
+pytest-asyncio = "^0.25.3"
+pytest-cov = "^6.0.0"
 
