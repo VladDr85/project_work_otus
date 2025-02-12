@@ -21,6 +21,9 @@ jobs:
     - name: Install dependencies
       run: |
         poetry install
+    - name: Check Poetry version
+      run: |
+        poetry --version
     - name: Analysing the code with pylint
       run: |
         files=$(git ls-files '*.py')
@@ -28,4 +31,4 @@ jobs:
           echo "No Python files found for analysis."
           exit 0
         fi
-        pylint $files
+        poetry run pylint $files
