@@ -20,8 +20,15 @@ jobs:
         echo "$HOME/.local/bin" >> $GITHUB_PATH
     - name: Install dependencies
       run: |
-        poetry add pylint
         poetry install
+    - name: Check Poetry version
+      run: |
+        poetry --version
     - name: Analysing the code with pylint
       run: |
-        pylint $(git ls-files '*.py')
+        files=$(git ls-files '*.py')
+        if [ -z "$files" ]; then
+          echo "No Python files found for analysis."
+          exit 0
+        fi
+        poetry run pylint $files
