@@ -20,8 +20,8 @@ jobs:
         echo "$HOME/.local/bin" >> $GITHUB_PATH
     - name: Install dependencies
       run: |
-        poetry install
         poetry add pylint
+        poetry install
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py')
