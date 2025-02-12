@@ -12,6 +12,10 @@ class LotteryBase(BaseModel):
         int,
         Field(description="ИД участника"),
     ]
+    incentive_list_id: Annotated[
+        int,
+        Field(description="ИД списка"),
+    ]
     incentive_id: Annotated[
         int,
         Field(description="ИД выбранного поощрения"),
@@ -31,8 +35,11 @@ class LotteryBase(BaseModel):
         ),
     ]
     receipt_date: Annotated[
-        datetime,
-        Field(description="Дата получения приза"),
+        datetime | None,
+        Field(
+            description="Дата получения приза",
+            default=None,
+        ),
     ]
 
 
@@ -42,6 +49,7 @@ class LotteryCreate(LotteryBase):
 
 class LotteryUpdate(LotteryCreate):
     user_id: int | None = None
+    incentive_list_id: int | None = None
     incentive_id: int | None = None
     play_date: datetime | None = None
     indication_receipt: bool | None = None

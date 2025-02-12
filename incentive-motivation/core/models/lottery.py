@@ -50,7 +50,7 @@ class Lottery(Base, IntIdPkMixin):
     )  # Дата получения приза
 
     user: Mapped["User"] = relationship(back_populates="lotteries")
-    incentive_list: Mapped["IncentiveList"] = relationship(back_populates="incentives")
+    incentive_list: Mapped["IncentiveList"] = relationship(back_populates="lotteries")
     incentive: Mapped["Incentive"] = relationship(back_populates="lotteries")
 
     def __repr__(self):

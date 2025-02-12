@@ -48,7 +48,7 @@ async def get_incentives(
 
 @router.get(
     path="/list/{incentive_list_id}/",
-    summary="Все поощрения в для розыгрыша",
+    summary="Все поощрения для розыгрыша",
     description="Вывод информации по поощрениям с фильтром по ИД заголовка Incentive.incentive_list_id (Поощрения)",
     response_model=list[Incentive],
 )
@@ -59,12 +59,12 @@ async def get_incentives_by_il_id(
         Depends(db_helper.session_getter),
     ],
 ):
-    incentive_list = await incentive_service.get_incentives_by_il_id(
+    incentives = await incentive_service.get_incentives_by_il_id(
         session=session,
         incentive_list_id=incentive_list_id,
     )
-    if incentive_list:
-        return incentive_list
+    if incentives:
+        return incentives
 
     raise HTTPException(
         status_code=status.HTTP_404_NOT_FOUND,

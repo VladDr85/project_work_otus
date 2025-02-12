@@ -19,6 +19,7 @@ class ApiV1Prefix(BaseModel):
     service: str = "/service"
     incentive_lists: str = "/incentive_lists"
     incentive: str = "/incentive"
+    lottery: str = "/lottery"
 
 
 class ApiPrefix(BaseModel):
