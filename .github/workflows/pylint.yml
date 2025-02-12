@@ -18,10 +18,15 @@ jobs:
       run: |
         curl -sSL https://install.python-poetry.org | python3 -
         echo "$HOME/.local/bin" >> $GITHUB_PATH
+        source $GITHUB_PATH
     - name: Install dependencies
       run: |
-        poetry add pylint
         poetry install
     - name: Analysing the code with pylint
       run: |
-        pylint $(git ls-files '*.py')
+        files=$(git ls-files '*.py')
+        if [ -z "$files" ]; then
+          echo "No Python files found for analysis."
+          exit 0
+        fi
+        pylint $files
