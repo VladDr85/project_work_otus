@@ -26,4 +26,4 @@ jobs:
         poetry --version
     - name: Analysing the code with pytest
       run: |
-        pytest -s --cov --cov-report html --cov-fail-under 85
+        poetry run pytest -s --cov --cov-report html --cov-fail-under 85
