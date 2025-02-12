@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import Annotated
-from pydantic import BaseModel, Field, PositiveInt
+from pydantic import BaseModel, Field, PositiveInt, ConfigDict
 
 
 class LotteryBase(BaseModel):
@@ -40,5 +40,14 @@ class LotteryCreate(LotteryBase):
     pass
 
 
+class LotteryUpdate(LotteryCreate):
+    user_id: int | None = None
+    incentive_id: int | None = None
+    play_date: datetime | None = None
+    indication_receipt: bool | None = None
+    receipt_date: datetime | None = None
+
+
 class Lottery(LotteryBase):
+    model_config = ConfigDict(from_attributes=True)
     id: PositiveInt

@@ -10,6 +10,7 @@ from .mixins.int_id_pk import IntIdPkMixin
 
 if TYPE_CHECKING:
     from .incentive import Incentive
+    from .incentive_list import IncentiveList
     from .user import User
 
 
@@ -25,6 +26,11 @@ class Lottery(Base, IntIdPkMixin):
         ForeignKey("users.id", ondelete="CASCADE"),
         nullable=False,
     )  # ИД участника
+    incentive_list_id: Mapped[int] = mapped_column(
+        Integer,
+        ForeignKey("incentive_lists.id"),
+        nullable=False,
+    )  # ИД списка
     incentive_id: Mapped[int] = mapped_column(
         Integer,
         ForeignKey("incentives.id", ondelete="CASCADE"),
@@ -44,6 +50,7 @@ class Lottery(Base, IntIdPkMixin):
     )  # Дата получения приза
 
     user: Mapped["User"] = relationship(back_populates="lotteries")
+    incentive_list: Mapped["IncentiveList"] = relationship(back_populates="incentives")
     incentive: Mapped["Incentive"] = relationship(back_populates="lotteries")
 
     def __repr__(self):

@@ -9,6 +9,7 @@ from .mixins.int_id_pk import IntIdPkMixin
 if TYPE_CHECKING:
     from .user import User
     from .incentive import Incentive
+    from .lottery import Lottery
 
 
 class IncentiveList(Base, IntIdPkMixin):
@@ -44,6 +45,7 @@ class IncentiveList(Base, IntIdPkMixin):
     incentives: Mapped[list["Incentive"]] = relationship(
         back_populates="incentive_list"
     )
+    lotteries: Mapped[list["Lottery"]] = relationship(back_populates="incentive_list")
 
     def __repr__(self):
         return (
