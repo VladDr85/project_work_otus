@@ -1,5 +1,5 @@
 from typing import Annotated
-from pydantic import BaseModel, Field, PositiveInt
+from pydantic import BaseModel, Field, PositiveInt, ConfigDict
 
 
 class PurposeBase(BaseModel):
@@ -37,5 +37,13 @@ class PurposeCreate(PurposeBase):
     pass
 
 
+class PurposeUpdate(PurposeCreate):
+    name: str | None = None
+    description: str | None = None
+    cost: int | None = None
+    is_deleted: bool | None = None
+
+
 class Purpose(PurposeBase):
+    model_config = ConfigDict(from_attributes=True)
     id: PositiveInt
