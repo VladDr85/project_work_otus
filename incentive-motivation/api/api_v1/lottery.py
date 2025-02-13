@@ -67,7 +67,7 @@ async def get_lotteries_by_user_id(
 
     raise HTTPException(
         status_code=status.HTTP_404_NOT_FOUND,
-        detail=f"Lottery list {user_id} not found",
+        detail=f"User {user_id} not found",
     )
 
 
@@ -93,7 +93,7 @@ async def get_lotteries_by_incentive_id(
 
     raise HTTPException(
         status_code=status.HTTP_404_NOT_FOUND,
-        detail=f"Lottery list {incentive_id} not found",
+        detail=f"Incentive {incentive_id} not found",
     )
 
 
@@ -145,7 +145,7 @@ async def get_lottery(
 
     raise HTTPException(
         status_code=status.HTTP_404_NOT_FOUND,
-        detail=f"Incentive {lottery_id} not found",
+        detail=f"Lottery {lottery_id} not found",
     )
 
 
@@ -213,7 +213,7 @@ async def update_lottery(
 
     raise HTTPException(
         status_code=status.HTTP_404_NOT_FOUND,
-        detail=f"Incentive {lottery_id} not found",
+        detail=f"Lottery {lottery_id} not found",
     )
 
 
@@ -247,5 +247,5 @@ async def delete_lottery(
 
     raise HTTPException(
         status_code=status.HTTP_404_NOT_FOUND,
-        detail=f"Incentive {lottery_id} not found",
+        detail=f"Lottery {lottery_id} not found",
     )
